@@ -1,0 +1,7 @@
+{
+    "paths" : [
+        {
+            "path": "/sample1", "resource": "starter.js"
+        }
+    ]
+}
