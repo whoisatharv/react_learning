@@ -1,0 +1,5 @@
+class HttpDocument{
+    constructor(socket){
+    
+    }
+}
