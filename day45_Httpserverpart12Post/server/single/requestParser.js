@@ -28,7 +28,7 @@ var i = w[1].indexOf("?");
    if(request.method=="POST"){
     //assignment
     var lastline=splits[splits.length-1];
-    request.queryString=w[1].substring(i+1);
+    request.queryString=lastline;
     request.data=JSON.parse(JSON.stringify(qs.decode(request.queryString)));
     console.log("Lastline:"+lastline);
    }
