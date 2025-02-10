@@ -1,0 +1,14 @@
+{
+    "paths":[
+        {
+            "path":"/admin","resource":"AdminStarter.js"
+        },
+
+        {
+           "path":"/createAdmin","resource":"CreateAdministrator.js"
+        },
+        {
+            "path":"/authenticateAdmin","resource":"AuthenticateAdministrator.js"
+        }
+    ]
+}
