@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<HTML lang='en'>
+    <head>
+        <title>College message board</title>
+        <meta charset="utf-8">
+        <script>
+            function validateForm(frm)
+            {
+                var rollNumber=frm.rollNumber.value.trim();
+                var  name=frm.name.value.trim();
+                var rollnumberErrorSection=document.getElementById('rollNumber');
+                var nameErrorSection=document.getElementById("nameErrorSection");
+                rollnumberErrorSection.innerHTML="";//2 single quotes
+                nameErrorSection.innerHTML="";//2 single quotes
+                var valid=true;
+                if(rollNumber.length==0){
+                  valid=false;
+                  rollnumberErrorSection.innerHTML="required";
+
+                }
+                if(name.length==0)
+                {
+                    nameErrorSection.innerHTML='required'
+                }
+                if(rollNumber.length>0)
+            {
+                var e=0;
+                var validSet='0123456789';
+                while(e<rollNumber.length)
+            {
+                if(validSet.indexOf(rollNumber.charAt(e))==-1)
+            {
+                valid=false;
+                rollNumberErrorSection.innerHTML="should be a number";
+                break;
+            }
+            e++;
+            }
+            }
+            return valid;
+            }
+        </script>
+        <body>
+            <h1>Administration</h1>
+            <table width='100%' border='0'>
+                <tr>
+                    <td>
+                        <h3>Student(Add Module)</h3>
+
+                    </td>
+                    <td align='right'>
+                        <a href='logout'>Logout</a>
+                    </td>
+                </tr>
+                <table>
+                    <form action='addStudent' onsubmit='return validateForm(this)'></form>
+                </table>
+                <tr>
+                    <td> Roll number</td>
+                    <td> <input type='text' id='rollNumber' name='rollnumber' maxlength='10' size='11'>
+                    <span id='rollNumberErrorSection' style='color:red'></span>
+                    </td>
+                </tr>
+                <td>
+                    Name
+                </td>
+                <td>
+                    <input type='text' id='name' name='name' maxlength="20" size='26'>
+                    <span id='nameErrorSection' style='color:red'></span>
+                </td>
+                <tr>
+                    <td colspan='2' align="center">
+                        <button type='submit'>Add</button>
+                    </td>
+                </tr>
+            </table>
+            <br>
+            <a href="AdminHomePage.html">Home</a>
+        </body>
+    </head>
+</HTML>
