@@ -1,0 +1,11 @@
+{
+"students":[
+{"rollNumber":101,"name":"atharva vyas"},
+{"rollNumber":102,"name":"vatsal vyas"},
+{"rollNumber":103,"name":"Rahul Pandit"},
+{"rollNumber":104,"name":"Kushagr Trivedi"},
+{"rollNumber":105,"name":"Pushkal Trivedi"},
+{"rollNumber":106,"name":"Rahul Sharma"},
+{"rollNumber":107,"name":"Harish dev"}
+]
+}
