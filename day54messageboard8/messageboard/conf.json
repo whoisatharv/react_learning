@@ -1,0 +1,32 @@
+{
+    "paths":[
+        {
+            "path":"/admin","resource":"AdminStarter.js"
+        },
+
+        {
+           "path":"/createAdmin","resource":"CreateAdministrator.js"
+        },
+        {
+            "path":"/authenticateAdmin","resource":"AuthenticateAdministrator.js"
+        },
+        {
+            "path":"/getStudents","resource":"Students.js"
+        },
+        {
+            "path":"/addStudents","resource":"addStudents.js"
+        },
+        {
+            "path":"editStudent","resource":"editStudents.js"
+        },
+        {
+            "path":"updateStudent","resource":"updateStudent.js"
+        },
+        {
+            "path":"deleteStudentConfirmation","resource":"deleteStudentConfirmation.js"
+        },
+        {
+            "path":"deleteStudent","resource":"deleteStudent.js"
+        }
+    ]
+}
