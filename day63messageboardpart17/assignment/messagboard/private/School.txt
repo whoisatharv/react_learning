@@ -1,0 +1,10 @@
+class School{
+    constructor(){
+        console.log("class school created");
+
+    }
+    studentname(value){
+        console.log("Student name: "+value);
+    }
+}
+module.exports=School

@@ -1,0 +1,9 @@
+class  Person{
+    constructor(){
+        console.log("person is created");
+    }
+    name(value){
+        console.log("Person Nmae: "+value);
+    }
+}
+module.exports=Person;

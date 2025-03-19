@@ -1,0 +1,44 @@
+const fs=require("fs");
+const School=require("./School.js");
+const Person=require("./Person.js");
+
+var this.Module=this;
+
+exports.processRequest=function(request,response){
+    //factory pattern
+    class Factory{
+        constructor(){
+            this.item={
+                "school":School,
+                "person":Person
+            }
+        }
+
+        createItem(itemName){
+            if(this.item[itemName]){
+                return new this.item[itemName];
+            }
+            return "404";
+        }
+    }
+
+    var factory=new Factory();
+    var obj=factory.createItem(request.data['school']);
+    var dataRecieved="";
+    if(Obj != "404") {
+		console.log(Obj['studentname'](request.data['name']));
+		dataRecieved = `Data Recieved : ${request.data['school']} student ${request.data['name']}`;
+	} else {
+
+		Obj = factory.createItem(request.data['person']);
+		if(Obj != "404") {
+			console.log(Obj['name'](request.data['name']));
+			dataRecieved = `Data Recieved : ${request.data['person']}  ${request.data['name']}`;
+		} 
+	}
+
+	response.write(dataRecieved);
+	response.close();
+
+}
+
