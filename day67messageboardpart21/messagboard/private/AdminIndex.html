@@ -1,0 +1,48 @@
+
+ <!DOCTYPE HTML> 
+<HTML lang = 'eg'> 
+<head> 
+ <title> College Message board </title> 
+ <meta charset = 'utf-8'> 
+
+     <script>  
+     function validateForm(f){ 
+     var username = f.username.value.trim(); 
+     var password = f.password.value.trim(); 
+     if(username.length == 0) { 
+     alert('Username Required'); 
+     f.username.focus(); 
+      return false; 
+     } 
+
+     if(password.length == 0) { 
+        alert('Password Required'); 
+        f.password.focus(); 
+        return false; 
+     } 
+     return true; 
+     } 
+     </script> 
+
+     <body> 
+     <h1> Administrator Module </h1> 
+     <h3> Authentication </h3> 
+     <form action = 'authenticateAdmin' method = 'POST' onsubmit = 'return validateForm(this)'> 
+     <table border = '0' > 
+     <tr> 
+     <td> UserName </td> 
+     <td><input type = 'text' id = 'username' name = 'username' maxlength = '15' size = '16' /> </td> 
+     </tr> 
+     <tr> 
+     <td> Password</td> 
+     <td> <input type = 'password' id = 'password' name = 'password' maxlength = '15' size = '16' /></td> 
+     </tr> 
+     <tr> 
+     <td colspan = '2' align = 'center'> 
+     <button type = 'submit' > Login </button> 
+     </td> 
+     </tr> 
+     </table> 
+     </form> 
+	 </body>
+ 	</html>
