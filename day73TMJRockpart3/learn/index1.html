@@ -1,0 +1,151 @@
+
+
+<!DOCTYPE HTML> 
+<HTML lang = 'eg'> 
+<head> 
+   <title> Learning </title> 
+   <meta charset = 'utf-8'> 
+</head>
+<script>  
+
+    function sam() {
+        var a = document.getElementById('abc')
+        alert(a.tagName); 
+    }
+    function tom() {
+        var a= document.getElementById("pqr");
+        alert(a.tagName);
+    }
+
+    function john() {
+        var a = document.getElementById("qws");
+        alert(a.tagName);
+    }
+
+    function insertBeforeTag() {
+        // var abc = document.getElementById('abc');
+        // var child = document.getElementById('abc1');
+        // var newItem = document.createElement('div');
+        // var node =  document.createTextNode(" added above here")
+        // newItem.appendChild(node);
+        // child.before(newItem);
+
+        // same thing the other way by sir
+       var abc = document.getElementById('abc');
+
+       var newItem = document.createElement('div');
+       newItem.innerHTML = "added above here";
+       abc.parentNode.insertBefore(newItem,abc.nextSibling);
+   }
+
+   function insertAfterTag() {
+        // var abc = document.getElementById('abc');
+        // var child = document.getElementById('abc2');
+        // var newItem = document.createElement('div');
+        // var node =  document.createTextNode(" added after here")
+        // newItem.appendChild(node);
+        // child.after(newItem);
+
+              // same thing the other way by sir
+       var abc = document.getElementById('pqr');
+
+       var newItem = document.createElement('div');
+       newItem.innerHTML = "added after here";
+       abc.parentNode.insertBefore(newItem,abc);
+   }
+
+   function appendAtlast() {
+    var abc = document.getElementById('abc');
+    var newItem = document.createElement('div');
+    var node =  document.createTextNode(" Appended at the last child")
+    abc.append(node);
+}
+
+function addBlueClass () {
+    var abc = document.getElementById('abc');
+    abc.classList.add("blueClass")
+}
+
+function removeBlueClass() {
+    var abc = document.getElementById('abc');
+    abc.classList.remove("blueClass")
+}
+function hideItem() {
+    var abc = document.getElementById('abc2');
+        //abc.style.visibility = "hidden"
+    abc.style.display = "none"
+}
+function showItem() {
+    var a = document.getElementById('abc2');
+        //a.style.visibility = "visible"
+    a.style.display = ""
+}
+
+function $$$(item) {
+    var a = document.getElementById(item);
+
+    a.hide = function () {
+        this.style.display = "none"
+    }
+
+    a.show = function () {
+        this.style.display = ""
+    }
+    return a
+}
+
+function gone() {
+     $$$('abc2').hide();
+}
+
+function display() {
+    $$$('abc2').show();
+}
+
+</script> 
+<style>
+    .compName {
+        color :  green;
+        font-size : 24pt
+    }
+    .customer {
+        background-color: red;
+        color: white;
+        font-size : 32pt
+    }
+
+    .blueClass {
+        color: blue;
+        font-size: 64pt
+    }
+</style>
+<head>
+   <body> 
+     <div id = 'abc' class = 'compName'>
+         What ever
+         <div id = 'abc1' class = 'customer'>
+             Add above me  
+         </div>
+         <div id = 'abc2'>
+             Cool
+         </div>
+     </div>
+     <span id = 'pqr'>
+        Add after me
+    </span>
+    <form id = 'qws'>
+    </form>
+    <button type ='button' onClick = 'sam()'> A Button  </button> <br><br>
+    <button type ='button' onClick = 'tom()' > B button  </button> <br><br>
+    <button type ='button' onClick = 'john()' > C button  </button> <br><br>
+    <button type ='button' onClick = 'insertBeforeTag()' > Add div before button  </button> <br><br>
+    <button type ='button' onClick = 'insertAfterTag()' > Add div After button  </button> <br><br>
+    <button type ='button' onClick = 'appendAtlast()' > Append at last  </button> <br><br>
+    <button type ='button' onClick = 'addBlueClass()' > Add blue class  </button> <br><br>
+    <button type ='button' onClick = 'removeBlueClass()' > Remove blue class  </button> <br><br>
+    <button type ='button' onClick = 'gone()' > Gone </button> <br><br>
+     <button type ='button' onClick = 'display()' > Show </button> <br><br>
+    <button type ='button' onClick = 'hideItem()' > Hide </button> <br><br>
+    <button type ='button' onClick = 'showItem()' > Show </button> <br><br>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>learning</title>
+    <script>
+        function sam()
+        {
+        var a=document.getElementbyId("msms");
+        alert(a.tagName);
+
+        }
+        function tom()
+        {
+            var a=document.getElementbyId("bb");
+            
+            var b=document.createElement("span");
+            b.innerHTML="God is great";
+            a.parentNode.insertBefore(b,a.nextSibling);
+        }
+        function john(){
+            
+            var a=document.getElementbyId("bb");
+            
+            var b=document.createElement("span");
+            b.innerHTML="ujjain";
+            a.parentNode.insertBefore(b,a);
+        }
+
+        function toy()
+        {
+            var a=document.getElementById("abcd");
+            a.classList.add("compName");
+            
+        }
+
+        function boy()
+        {
+         var a=document.getElementById("abcd");
+         a.classList.remove("compName")
+        }
+        function joy()
+        {
+            var a=document.getElementById("abcd");
+            //a.style.visibility="hidden";
+            a.style.display="none";
+        }
+        function troy()
+        {
+            var a=document.getElementById("abcd");
+            a.style.display="";
+        }
+    </script>
+    <style>
+        .compName
+        {
+            color:green;
+            font-size:24pt;
+        }
+        .customer
+        {
+            background-color: red;
+            color:white;
+            font-size:12pt;
+        }
+    </style>
+</head>
+<body>
+    <div id='abcd' class='compName'>
+        whatever
+    </div>
+    <span id='pqr' class='customer'>
+        cool
+    </span>
+    <form id='msms'>
+
+    </form>
+    <button type='button' onClick='sam()'> A button</button><br><br>
+    <button type='button' onClick='tom()'> A button</button><br><br>
+    
+    <button id='bb' type='button' onClick='john()'>A Button</button><br><br>
+    <button id='cc' type='button' onClick='toy()'>A Button</button><br><br>
+    <button id='dd' type='button' onClick='boy()'>A Button</button><br><br>
+    <button id='ee' type='button' onClick='joy()'>A Button</button><br><br>
+    <button id='ff' type='button' onClick='troy()'>A Button</button><br><br>
+</body>
+</body>
+</body>
+</html>
