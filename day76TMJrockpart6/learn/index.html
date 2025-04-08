@@ -1,0 +1,125 @@
+<!DOCTYPE HTML> 
+<html lang="en"> 
+<head> 
+   <title> Learning </title> 
+   <meta charset="utf-8"> 
+</head>
+<script>  
+
+function addBlueClass() {
+    var abc = document.getElementById('abc');
+    abc.classList.add("blueClass");
+}
+
+function removeBlueClass() {
+    var abc = document.getElementById('abc');
+    abc.classList.remove("blueClass");
+}
+
+function hideItem() {
+    var abc = document.getElementById('abc2');
+    abc.style.display = "none";
+}
+
+function showItem() {
+    var a = document.getElementById('abc2');
+    a.style.display = "";
+}
+
+function $$(item) {
+    var a = document.getElementById(item);
+    a.hide = function () {
+        this.style.display = "none";
+    };
+    a.show = function () {
+        this.style.display = "";
+    };
+    return a;
+}
+
+function gone() {
+    $$('abc2').hide();
+}
+
+function display() {
+    $$('abc2').show();
+}
+
+function validateForm(formId) {
+    var form = document.getElementById(formId);
+    var requiredFields = {
+        username: "Username is required",
+        textarea: "Textarea is required"
+    };
+
+    var isValid = true;
+
+    Object.keys(requiredFields).forEach(function (id) {
+        var input = document.getElementById(id);
+        var errorMessage = document.getElementById(id + "_error");
+        
+        if (!input.value.trim()) {
+            isValid = false;
+            if (!errorMessage) {
+                errorMessage = document.createElement('div');
+                errorMessage.id = id + "_error";
+                errorMessage.className = 'redClass';
+                errorMessage.innerText = requiredFields[id];
+                input.parentNode.insertBefore(errorMessage, input);
+            }
+        } else {
+            if (errorMessage) {
+                errorMessage.remove();
+            }
+        }
+    });
+
+    return isValid;
+}
+</script> 
+
+<style>
+    .compName {
+        color: green;
+        font-size: 24pt;
+    }
+    .customer {
+        background-color: red;
+        color: white;
+        font-size: 32pt;
+    }
+    .blueClass {
+        color: blue;
+        font-size: 64pt;
+    }
+    .redClass {
+        color: red;
+        font-size: 12pt;
+    }
+</style>
+
+<h1> Learning </h1>
+<body> 
+    <form id="qws" action="abcd" method="POST" onsubmit="return validateForm('qws')">
+        <span id="userrequired"></span><br>
+        <input type="text" id="username" name="usern" size="16"><br><br>
+        
+        <span id="textarearequired"></span><br>
+        <textarea id="textarea" name="Text1" cols="40" rows="5"></textarea><br><br>
+
+        <input type="radio" id="html" name="my_radio">  
+        <label for="html">HTML</label>
+
+        <input type="radio" id="css" name="my_radio">
+        <label for="css">CSS</label> <br><br>
+
+        <input type="checkbox" id="checkbox1">
+        <label for="checkbox1">Bike</label>
+
+        <input type="checkbox" id="checkbox2" name="car">
+        <label for="checkbox2">Car</label><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
