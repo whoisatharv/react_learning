@@ -1,0 +1,165 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Learning</title>
+    <style>
+        .redClass {
+            color: red;
+            font-size: 12pt;
+        }
+
+        .modal {
+            z-index: 1;
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            display: none;
+            background-color: rgba(0, 0, 0, 0.4);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            width: 30%;
+            border: 1px solid black;
+            background-color: white;
+            padding: 20px;
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            color: #aaaaaa;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+        }
+    </style>
+
+    <script>
+        function $$$$(someId) {
+            return {
+                "validateOnSubmit": function (rules) {
+                    window.addEventListener("load", function () {
+                        var valid = true;
+                        var frm = document.getElementById(someId);
+                        if (!frm) throw "Invalid form Id " + someId;
+                        frm.onsubmit = function () {
+                            return valid;
+                        }
+                    });
+                }
+            }
+        }
+
+        function $$$() {
+            return {
+                "modal": function (modalId) {
+                    var element = getElement(modalId);
+                    if (element) {
+                        var modalDialog = document.getElementById("modal");
+                        var modalContent = document.getElementById("modalcontent");
+                        if (modalDialog.style.display === "none" || modalDialog.style.display === "") {
+                            element.style.display = "block";
+                            modalContent.appendChild(element);
+                            if (element.getAttribute("onload-modal") === 'true') {
+                                loading();
+                            }
+                            modalDialog.style.display = "flex";
+                        } else {
+                            if (element.getAttribute("onclose-modal") === 'true') {
+                                closing();
+                            }
+                            modalDialog.style.display = "none";
+                        }
+                    }
+                },
+                "closeModal": function (modalId) {
+                    var element = getElement(modalId);
+                    if (element && element.getAttribute("onclose-modal") === 'true') {
+                        closing();
+                        hideDialog("modal");
+                    }
+                }
+            }
+        }
+
+        var removedItems = [];
+
+        function showDialog(dialogId) {
+            $$$().modal(dialogId);
+        }
+
+        function hideDialog(dialogId) {
+            var dialog = document.getElementById(dialogId);
+            dialog.style.display = "none";
+        }
+
+        function getElement(id) {
+            for (var item of removedItems) {
+                if (item.id === id) {
+                    return item;
+                }
+            }
+            return null;
+        }
+
+        var loading = function () {
+            var text = document.getElementById("modalText");
+            text.value = "";
+        }
+
+        var closing = function () {
+            console.log("Close Modal");
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            var element = document.querySelector("[for-modal='true']");
+            removedItems.push(element);
+            element.remove();
+
+            var showbtn = document.getElementById('showbtn');
+            showbtn.onclick = function () {
+                showDialog('xyz');
+            };
+
+            var closeX = document.getElementById('closeX');
+            closeX.onclick = function () {
+                $$$().closeModal('xyz');
+            };
+        });
+    </script>
+</head>
+
+<body>
+    <h1>Learning</h1>
+
+    <button type="button" id="showbtn">Show Dialog</button>
+    <br><br>
+
+    <div id="modal" class="modal">
+        <div id="modalcontent" class="modal-content">
+            <span id="closeX" class="close">&times;</span>
+            This is modal dialog.
+        </div>
+    </div>
+
+    <div id="xyz" for-modal="true" onload-modal="true" onclose-modal="true">
+        I am modal data. Please add me.
+        <br>
+        <input type="text" id="modalText" name="modaltext" />
+        <br>
+        <button type="button" onclick='$$$().closeModal("xyz")'>Close Button</button>
+    </div>
+</body>
+</html>
