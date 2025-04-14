@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>learning</title>
+    <script>
+        function $$$(someId)
+        {
+            return {
+                "validateOnSubmit":function(rules){
+                    window.addEventListener("load",function(){
+                        var errorMessage={};
+                        var valid=true;
+                        var formId=someId;
+                        var frm=document.getElementById(someId);
+                        if(!frm) throw "Invalid form Id "+ fromId;
+                        frm.onsubmit=function(){
+                            return valid;
+                        }
+                    })
+                }
+            }
+        }
+    </script>
+    <script>
+        function $$$(){
+            return{
+                "modal":function(modalId){
+                    var element=getElement(modalId);
+                    if(element){
+                        var modalDialog=document.getElementById("modal");
+                        if(modalDialog.style.display=="none"|| modalDialog.style.display==""){
+                            var modalcontent=document.getElementById("modal");
+                            element.style.display="block";
+                            modalcontent.appendChild(element);
+                            modalDialog.style.display="block";
+
+                        }
+                        else{
+                            modalDialog.style.display="none";
+                        }
+                    }
+                }
+            }
+        }
+        var removedItems = [];
+function showDialog(dialogId) {
+    $$$().modal(dialogId);
+}
+
+
+function hideDialog(dialogId) {
+    var dialog = document.getElementById(dialogId);
+    dialog.style.display = "none";
+}
+
+function getElement(id) {
+  var elements = [];
+    for (item of removedItems) {
+        if (item.id == id) {
+            elements.push(item);
+        }
+    }
+  if (elements && elements.length > 0) return elements[0];
+  else undefined;
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    var element = document.querySelector("[for-modal='true']");
+    removedItems.push(element);
+    element.remove();
+
+    var showbtn = document.getElementById('showbtn');
+    showbtn.onclick = function() {
+        showDialog('xyz');
+    };
+
+    var closebtn = document.getElementById('closebtn');
+    closebtn.onclick = function() {
+        hideDialog('xyz');
+    };
+}) 
+
+
+    </script>
+</head>
+
+<style>
+    .redClass {
+        color: red;
+        font-size:12pt;
+    }
+    .modal {
+        z-index: 1;
+        position:fixed;
+        left:0;
+        right:0;
+        display: none;
+        width : 100%;
+        height: 100%;
+        padding-top: 20%;
+        padding-right:35%;
+        padding-left:35%;
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+    .modal-content {
+        width : 30%;
+        height: 30%;
+        border: 1px solid black;
+        background-color : white;
+    }
+    .close{
+        float:right; 
+        color: #aaaaaa;
+        font-size: 28px;
+        font-weight: bold;
+
+    }
+    .close:hover,
+    .close:focus {
+        color: #000;
+        cursor:pointer;
+    }
+</style>
+<h1> Learning </h1>
+<body> 
+<!--     <form id = 'qws' action = 'abcd' method = 'POST' onsubmit = 'return $$$$("qws").validateOnSubmit(
+    {"username" : "required", "textarea": "required"})'> -->
+    <button type ='button' id = "showbtn"> Show Dialog</button> <br><br>
+    <button type ='button' id= 'closebtn'> Close Dialog</button> <br><br>
+
+    <div id = 'modal' class = 'modal'>
+        <div id = 'modalcontent' class = 'modal-content'>
+            <span id = 'closebtn' class = 'close'>&times;</span>
+            This is modal Dialog
+        </div>
+    </div>
+
+    <div id = 'xyz' for-modal = true>
+        I am modal data please add me.
+    </div>
+</body>
+</html>
+
+<!--Custom JS utility functions ($$$$, $$$)
+
+Dynamic modal rendering
+
+DOM manipulation: remove(), appendChild()
+
+Attribute selection: querySelector("[attr=value]")
+
+Event handling: addEventListener, onclick
+
+Global state tracking via arrays (removedItems)
+
+-->
