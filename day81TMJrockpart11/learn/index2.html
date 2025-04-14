@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning</title>
+    
+</head>
+//code written by amit
+<script>
+    function $$$(someId)
+    {
+        return{
+            "validateOnSubmit":function(rules){
+                window.addEventListener("load",function(){
+                    var formId=someId;
+                    var frm=document.getElementById(formId);
+                    if(!frm) throw "Invalid form id: "+formId;
+                    frm.onsubmit=function(){
+                        alert(formId+"from submitted");
+                        alert(JSON.stringify(rules));
+                        return false;
+                    }
+                })
+            }
+        }
+    }
+</script>
+<script>
+    ///code writen by bobby
+    $$$("abcd").validateOnSubmit({
+        "iii":"required",
+        "kkk":"required"
+    });
+
+    $$$("pqrs").validateOnSubmit({
+        "jjj":"required",
+    "mmm":"required"
+    });
+</script>
+<body>
+    <form id="abcd" action='nonno'>
+        <button type='submit'>FormABCD</button>
+    </form>
+    <form id="pqrs" action='yesyes'>
+        <button type='submit'>FormPQRS</button>
+    </form>
+</body>
+</html>
+The $$$ function is a mini form validation setup.
+
+It currently just logs the rules and stops submission.
+
+It can be extended to actually validate fields based on the provided rules.
+
+It’s a good example of object-oriented JavaScript and event-driven programming.

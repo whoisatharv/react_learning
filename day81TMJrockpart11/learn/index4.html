@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Day 80 TMJRock</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    .box { margin-top: 10px; font-size: 20px; }
+  </style>
+</head>
+<body>
+  <h2>Day 80 TMJRock - Part 10</h2>
+
+  <!-- System Time Div -->
+  <div id="timeDiv" class="box">System Time: </div>
+
+  <!-- XYZ Value Div -->
+  <div id="xyzDiv" class="box">xyz: </div>
+
+  <script>
+    // Function to update system time every second
+    function updateSystemTime() {
+      const timeDiv = document.getElementById("timeDiv");
+      setInterval(() => {
+        const now = new Date().toLocaleTimeString();
+        timeDiv.textContent = "System Time: " + now;
+      }, 1000);
+    }
+
+    // Function to run after 1 second of DOM load
+    function assignmentFunction() {
+      let xyz = 10;
+      document.getElementById("xyzDiv").textContent = "xyz: " + xyz;
+    }
+
+    // When DOM is loaded
+    document.addEventListener("DOMContentLoaded", () => {
+      updateSystemTime(); // Start system timer
+      setTimeout(assignmentFunction, 1000); // Run assignment function after 1 second
+    });
+  </script>
+</body>
+</html>

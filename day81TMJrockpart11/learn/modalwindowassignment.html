@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modal Window</title>
+  <script>
+    function $$$(){
+      return {
+        "modal":function(modalId){
+          var modalDialog= document.getElementById(modalId);
+          if(modalDialog.style.display=="none"){
+            modalDialog.style.display="block";
+          }
+          else
+          {
+            modalDialog.style.display="block"
+          }
+        }
+      }
+    }
+    function hideDialog(dialogId) {
+        var dialog = document.getElementById(dialogId);
+        dialog.style.display = "none";
+    }
+
+    function showDialog(dialogId)
+    {
+      $$$().modal(dialogId);
+    }
+    document.addEventListener("DOMContentLoaded", function() {
+        var showbtn = document.getElementById('showbtn');
+        showbtn.onclick = function() {
+            showDialog("modal");
+        };
+
+         var closebtn = document.getElementById('closebtn');
+        closebtn.onclick = function() {
+            hideDialog("modal");
+        };
+    }) 
+  </script>
+</head>
+<body>
+  <button type ='button' id = "showbtn"> Show Dialog</button> <br><br>
+  <button type ='button' id= 'closebtn'> Close Dialog</button> <br><br>
+  <div id = 'modal' class = 'modal'>
+    <div id = 'modalcontent' class = 'modal-content'>
+        <span id = 'closebtn' class = 'close'>&times;</span>
+        This is modal Dialog
+    </div>
+</div>
+</body>
+</html>

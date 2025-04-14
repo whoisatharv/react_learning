@@ -1,0 +1,65 @@
+<!DOCTYPE HTML> 
+<HTML lang = 'eg'> 
+<head> 
+ <title> College Message board </title> 
+ <meta charset = 'utf-8'> 
+
+     <script>  
+     function validateForm(f){ 
+     var username = f.username.value.trim(); 
+     var password = f.password.value.trim(); 
+     var rePassword = f.rePassword.value.trim();
+
+     if(username.length == 0) { 
+     alert('Username Required'); 
+     f.username.focus(); 
+      return false; 
+     } 
+
+     if(password.length == 0) { 
+        alert('Password Required'); 
+        f.password.focus(); 
+        return false; 
+     } 
+     if(rePassword.length == 0) { 
+        alert('Password confirmation Required'); 
+        f.rePassword.focus(); 
+        return false; 
+     } 
+     if(password != rePassword) {
+        alert('Password not confirmed correctly'); 
+        f.rePassword.value = "";
+        f.password.value = "";
+        f.password.focus();
+        return false;
+     }
+     return true; 
+     } 
+     </script> 
+   <head>
+     <body> 
+     <h1> Administrator Module </h1> 
+     <h3> Authentication </h3> 
+     <form action = '/admin/create' method = 'POST' onsubmit = 'return validateForm(this)'> 
+     <table border = '0' > 
+     <tr> 
+     <td> UserName </td> 
+     <td><input type = 'text' id = 'username' name = 'username' maxlength = '15' size = '16' /> </td> 
+     </tr> 
+     <tr> 
+     <td> Password</td> 
+     <td> <input type = 'password' id = 'password' name = 'password' maxlength = '15' size = '16' /></td> 
+     </tr> 
+          <tr> 
+     <td> Re Password</td> 
+     <td> <input type = 'password' id = 'rePassword' name = 'rePassword' maxlength = '15' size = '16' /></td> 
+     </tr> 
+     <tr> 
+     <td colspan = '2' align = 'center'> 
+     <button type = 'submit' > Create Administrator </button> 
+     </td> 
+     </tr> 
+     </table> 
+     </form> 
+	 </body>
+ 	</html>

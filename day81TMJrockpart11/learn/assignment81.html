@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Binding</title>
+</head>
+<body>
+
+  <h2>Two-Way Binding with Simple JavaScript</h2>
+
+  <input type="text" id="input" /><br><br>
+  <p>Value: <span id="output"></span></p>
+
+  <button id="set99">Set to 99</button>
+  <button id="set123">Set to 123</button>
+
+  <script>
+    const mm = { nm: "35" };
+
+    const input = document.getElementById("input");
+    const output = document.getElementById("output");
+    const btn99 = document.getElementById("set99");
+    const btn123 = document.getElementById("set123");
+
+    // Simple watch function to sync UI with object
+    function watch(obj, key, callback) {
+      let value = obj[key];
+      Object.defineProperty(obj, key, {
+        get() {
+          return value;
+        },
+        set(newVal) {
+          value = newVal;
+          callback(newVal);
+        }
+      });
+    }
+
+    // When mm.nm changes, update input and output
+    watch(mm, 'nm', function(newValue) {
+      input.value = newValue;
+      output.textContent = newValue;
+    });
+
+    // Initial UI sync
+    input.value = mm.nm;
+    output.textContent = mm.nm;
+
+    // When user types, update mm.nm
+    input.addEventListener('input', function() {
+      mm.nm = input.value;
+    });
+
+    // Buttons to set mm.nm
+    btn99.addEventListener('click', function() {
+      mm.nm = "99";
+    });
+
+    btn123.addEventListener('click', function() {
+      mm.nm = "123";
+    });
+  </script>
+
+</body>
+</html>
