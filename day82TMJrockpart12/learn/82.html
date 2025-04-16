@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- corrected language code -->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Learning</title>
+
+  <!-- Bobby's Script FIRST -->
+  <script>
+    // Script written by Bobby
+    var myModel = {
+      city: "Ujjain",
+      salary: 40000,
+    };
+
+    function two() {
+      var city = document.getElementById("ct");
+      var salary = document.getElementById("sl");
+      alert(`City ${city.value} and Salary ${salary.value}`);
+    }
+
+    function one() {
+      myModel.city = "Goa";
+      myModel.salary = 10000;
+    }
+  </script>
+
+  <!-- Amit's Script AFTER data model is defined -->
+  <script>
+    function $$$() {}
+
+    $$$.dataModel = myModel; // assign Bobby's model to $$$
+
+    $$$.boundComponents = [];
+
+    $$$.startMonitoring = function () {
+      $$$.boundComponents.forEach(function (dsElement) {
+        // Update component from model if model changes
+        dsElement["model-state"]["new-value"] = $$$.dataModel[dsElement.modelAttribute];
+
+        if (
+          dsElement["model-state"]["new-value"] !== dsElement["model-state"]["old-value"]
+        ) {
+          dsElement.component.setAttribute(
+            dsElement.componentAttribute,
+            dsElement["model-state"]["new-value"]
+          );
+
+          dsElement["model-state"]["old-value"] = dsElement["model-state"]["new-value"];
+          dsElement["component-state"]["old-value"] = dsElement["model-state"]["new-value"];
+          dsElement["component-state"]["new-value"] = dsElement["model-state"]["new-value"];
+          return;
+        }
+
+        // Update model from component if component changes
+        dsElement["component-state"]["new-value"] =
+          dsElement.component[dsElement.componentAttribute];
+
+        if (
+          dsElement["component-state"]["new-value"] !==
+          dsElement["component-state"]["old-value"]
+        ) {
+          $$$.dataModel[dsElement.modelAttribute] =
+            dsElement["component-state"]["new-value"];
+          dsElement["component-state"]["old-value"] =
+            dsElement["component-state"]["new-value"];
+        }
+      });
+
+      // Re-run monitoring every 1.5 seconds
+      setTimeout($$$.startMonitoring, 1500);
+    };
+
+    window.addEventListener("load", function () {
+      var componentsWithBindTo = document.querySelectorAll("[bind-to]");
+
+      componentsWithBindTo.forEach(function (node) {
+        var modelAttribute = node.getAttribute("bind-to");
+        if (!$$$.dataModel[modelAttribute]) return;
+
+        node.setAttribute("value", $$$.dataModel[modelAttribute]);
+
+        var dsElement = {
+          component: node,
+          componentAttribute: "value",
+          modelAttribute: modelAttribute,
+          "component-state": {
+            "old-value": node["value"],
+            "new-value": node["value"],
+          },
+          "model-state": {
+            "old-value": $$$.dataModel[modelAttribute],
+            "new-value": $$$.dataModel[modelAttribute],
+          },
+        };
+
+        $$$.boundComponents.push(dsElement);
+      });
+
+      setTimeout($$$.startMonitoring, 1500);
+    });
+  </script>
+</head>
+
+<body>
+  <h1>Learning</h1>
+
+  City:
+  <input id="ct" type="text" bind-to="city" /><br /><br />
+  Salary:
+  <input id="sl" type="number" bind-to="salary" /><br /><br />
+
+  <button id="button1" type="button" onclick="one()">Button 1 - Change Model</button>
+  <button id="button2" type="button" onclick="two()">Button 2 - Display Everything</button>
+</body>
+</html>
